@@ -2,12 +2,13 @@
 
 Este é um projeto educacional de Engenharia de Dados que coleta informações da API do Spotify e salva os dados de artistas em arquivos CSV.
 
-## Objetivo
+## Objetivos
 
-- Aprender a se conectar com a API do Spotify.
-- Realizar ingestão de dados.
-- Armazenar dados localmente (ou futuramente na nuvem).
-- Praticar boas práticas de organização de projetos de dados.
+- Coletar dados de artistas, músicas e popularidade diretamente da API do Spotify.
+- Armazenar dados brutos e tratados na AWS S3 (simulando um Data Lake).
+- Transformar dados com Pandas ou PySpark.
+- Criar visualizações interativas com insights musicais.
+- Automatizar o pipeline com Airflow.
 
 ## Tecnologias
 
