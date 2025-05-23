@@ -61,8 +61,5 @@ spotify-data-pipeline/
 └── README.md
 ```
 
-## Próximos módulos
-
-- Armazenamento no AWS S3
-- Transformações com Pandas e PySpark
-- Orquestração com Apache Airflow
+## Autor
+Feito por Thomas Nunes.
