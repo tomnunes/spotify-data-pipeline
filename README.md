@@ -1,55 +1,68 @@
 # Spotify Data Pipeline
 
-Este projeto é um estudo e tem como objetivo construir um pipeline de engenharia de dados completo que coleta informações da API do Spotify, armazena os dados na AWS, realiza transformações e disponibiliza análises interativas com Python e ferramentas modernas.
+Este é um projeto educacional de Engenharia de Dados que coleta informações da API do Spotify e salva os dados de artistas em arquivos CSV.
 
----
+## Objetivo
 
-## Objetivos
+- Aprender a se conectar com a API do Spotify.
+- Realizar ingestão de dados.
+- Armazenar dados localmente (ou futuramente na nuvem).
+- Praticar boas práticas de organização de projetos de dados.
 
-- Coletar dados de artistas, músicas e popularidade diretamente da API do Spotify.
-- Armazenar dados brutos e tratados na AWS S3 (simulando um Data Lake).
-- Transformar dados com Pandas ou PySpark.
-- Criar visualizações interativas com insights musicais.
-- Automatizar o pipeline com Airflow.
-
----
-
-## Arquitetura do Pipeline
-
-```mermaid
-graph LR
-  A[API Spotify] --> B[Script de Ingestão (Python)]
-  B --> C[Armazenamento Raw (AWS S3)]
-  C --> D[Transformação (Pandas ou PySpark)]
-  D --> E[Armazenamento Limpo (S3 Parquet)]
-  E --> F[Visualizações (Streamlit / Jupyter)]
-```
----
-
-## Tecnologias e Ferramentas
+## Tecnologias
 
 - Python 3.10+
-- spotipy (SDK do Spotify)
-- pandas / pyspark
-- AWS S3
-- Apache Airflow
-- Jupyter Notebook / Streamlit
-- Git & GitHub
+- Spotipy (cliente Python para API do Spotify)
+- Pandas
+- python-dotenv
 
----
+## Como executar
 
-## Estrutura do Projeto
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/tomnunes/spotify-data-pipeline.git
+   cd spotify-data-pipeline
+   ```
 
-```spotify-data-pipeline/
-├── README.md
-├── notebooks/         # Análises e testes locais
-├── scripts/           # Scripts de ingestão e transformação
-├── data/              # Dados locais para testes
-├── dags/              # DAGs para orquestração (Airflow)
-└── requirements.txt   # Dependências Python
+2. Crie e ative o ambiente virtual:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Crie o arquivo `.env` com suas credenciais da API do Spotify:
+   ```
+   SPOTIPY_CLIENT_ID=client-id
+   SPOTIPY_CLIENT_SECRET=client-secret
+   SPOTIPY_REDIRECT_URI=http://localhost:8888/callback
+   ```
+
+5. Execute o script de ingestão:
+   ```bash
+   python scripts/ingest_spotify_data.py
+   ```
+
+## Estrutura de Pastas
+
+```
+spotify-data-pipeline/
+├── scripts/
+│   └── ingest_spotify_data.py
+├── data/
+│   └── raw/
+├── venv/
+├── .env
+├── requirements.txt
+└── README.md
 ```
 
---- 
+## Próximos módulos
 
-## Autor
-Feito por Thomas Nunes.
+- Armazenamento no AWS S3
+- Transformações com Pandas e PySpark
+- Orquestração com Apache Airflow
