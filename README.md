@@ -51,4 +51,5 @@ graph LR
 
 --- 
 
-## 
+## Autor
+Feito por Thomas Nunes.
