@@ -48,19 +48,5 @@ Este é um projeto educacional de Engenharia de Dados que coleta informações d
    python scripts/ingest_spotify_data.py
    ```
 
-## Estrutura de Pastas
-
-```
-spotify-data-pipeline/
-├── scripts/
-│   └── ingest_spotify_data.py
-├── data/
-│   └── raw/
-├── venv/
-├── .env
-├── requirements.txt
-└── README.md
-```
-
 ## Autor
 Feito por Thomas Nunes.
