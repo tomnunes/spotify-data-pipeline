@@ -1,7 +1,3 @@
-# Welcome to your prefect.yaml file! You can use this file for storing and managing
-# configuration for deploying your flows. We recommend committing this file to source
-# control along with your flow code.
-
 # Generic metadata about this project
 name: spotify-data-pipeline
 prefect-version: 3.4.3
@@ -17,16 +13,46 @@ pull: null
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: daily-run
-  version: null
-  tags: []
-  description: null
-  schedule:
-    interval: 86400
-  flow_name: null
-  entrypoint: scripts/pipeline_flow.py:spotify_pipeline
-  parameters: {}
-  work_pool:
-    name: default-agent-pool
-    work_queue_name: default
-    job_variables: {}
+  - name: daily-run
+    version: null
+    tags: []
+    description: Pipeline diário de extração, transformação e upload para S3
+    schedule:
+      interval: 86400
+    flow_name: spotify_pipeline
+    entrypoint: scripts/pipeline_flow.py:spotify_pipeline
+    parameters:
+      date_str: "{{ today }}"
+    work_pool:
+      name: default-agent-pool
+      work_queue_name: default
+      job_variables: {}
+
+  - name: transform-daily-run
+    flow_name: transform_from_S3
+    entrypoint: flows/transform_from_s3.py:transform_from_s3_flow
+    parameters: {}
+    schedule:
+      interval: 86400
+    work_pool:
+      name: default-agent-pool
+      work_queue_name: default
+      job_variables: {}
+
+  - name: manual-run
+    flow_name: spotify_pipeline
+    entrypoint: scripts/pipeline_flow.py:spotify_pipeline
+    parameters:
+      date_str: "2025-05-27"
+    work_pool:
+      name: default-agent-pool
+      work_queue_name: default
+
+  - name: orchestrator-run
+    flow_name: orchestrator_flow
+    entrypoint: flows/orchestration.py:orchestrator_flow
+    parameters: {}
+    work_pool:
+      name: default-agent-pool
+      work_queue_name: default
+      job_variables: {}

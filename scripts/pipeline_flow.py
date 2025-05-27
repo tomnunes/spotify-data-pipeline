@@ -1,5 +1,5 @@
 from prefect import flow
-from datetime import date
+from datetime import date, datetime
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -9,8 +9,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-@flow(name="Spotify Top Artists Pipeline")
-def spotify_pipeline():
+@flow(name="spotify_pipeline")
+def spotify_pipeline(date_str: str):
+    try:
+        datetime.strptime(date_str, "%Y-%m-%d")
+    except ValueError:
+        raise ValueError("Formato inválido de data. Use o padrão YYYY-MM-DD.")
+
+    print(f"✅ Parâmetro de data recebido corretamente: {date_str}")    
+
+
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
