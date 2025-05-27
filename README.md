@@ -6,9 +6,9 @@ Este é um projeto educacional de Engenharia de Dados que coleta informações d
 
 - Coletar dados de artistas, músicas e popularidade diretamente da API do Spotify.
 - Armazenar dados brutos e tratados na AWS S3 (simulando um Data Lake).
-- Transformar dados com Pandas ou PySpark.
+- Transformar dados com Pandas.
 - Criar visualizações interativas com insights musicais.
-- Automatizar o pipeline com Airflow.
+- Automatizar o pipeline com Prefect.
 
 ## Tecnologias
 
